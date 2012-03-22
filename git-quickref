@@ -1,0 +1,155 @@
+flx-docs - git quickref
+
+  Felix C. Stegerman <felixstegerman@noxqslabs.nl>
+  2012-03-22
+
+--
+
+=== Introduction ===
+
+  This is a quick reference for Git.
+
+( Replace 'project' with an appropriate name for your project;
+  <edit> with your editor; <msg> with a message; and ... with the
+  appropriate file(s)/path(s)/argument(s). )
+
+
+=== Global setup (one time) ===
+
+  (Use your name and email instead of mine.)
+
+  $ git config --global user.name "Felix C. Stegerman"
+  $ git config --global user.email felixstegerman@noxqslabs.nl
+
+  $ git config --global color.ui true
+
+
+=== Creating a repository ===
+
+  === Create a new project directory ===
+
+    $ cd .../dev                  # your development directory
+    $ mkdir project               # your project directory
+
+
+  === Use a (new/existing) project directory ===
+
+    $ cd project
+    $ git init .                  # create a repository
+
+
+  === Add some files (for new projects) ===
+
+    $ <edit> README .gitignore    # ignore e.g. *~
+    $ git add .                   # add all files in directory
+
+
+  === Initial Commit ===
+
+    $ git commit -a -s -m '<msg>' # See policy ?!
+
+
+=== Create a remote repository ===
+
+  $ cd ...                        # your git repository directory
+  $ mkdir project.git             # your remote project directory
+
+  $ cd project.git
+  $ git init --bare .             # create a repository
+
+
+=== Add a remote repository ===
+
+  $ cd .../project                # your project directory
+  $ git remote add origin .../project.git
+                                  # your remote project directory
+
+  $ git push origin master        # first push
+
+
+=== Push to remote repository ===
+
+  $ git push                      # later push
+
+
+=== Development ===
+
+  (In your project directory.)
+
+  $ <edit> ...                    #   1. edit
+  $ git add ...                   # ( 2. add new files )
+  $ git commit -a -s -m '...'     #   3. commit; see policy ?!
+  $ git push                      # ( 4. push )
+
+
+=== Clone a repository ===
+
+  $ git clone .../project.git project
+                                  # to use another name, change the
+                                  # last argument
+
+
+=== Useful commands & help ===
+
+  ([...] is optional)
+
+
+  === Help ===
+
+    $ man git
+    $ man git-<command>           # e.g. git-status
+
+    $ git help
+    $ git help <command>
+
+
+  === Miscellaneous ===
+
+    $ git status [-s]
+
+    $ git show                    # ... TODO ...
+
+    $ git config [--global] -l
+
+
+  === Log ===
+
+    $ git log [-p] [-<n>]         # -p = w/ diffs; e.g. -2 = last 2
+    $ git log [--oneline] [--graph]
+
+    $ git log [--stat] [--summary]
+
+    ... TODO ...
+
+
+  === Diff ===
+
+    $ git diff                    # index  vs. workdir
+    $ git diff HEAD               # commit vs. workdir
+    $ git diff --cached           # commit vs. index
+
+    ... TODO ...
+
+
+  ... TODO ...
+
+  See [1].
+
+
+=== Branching ===
+
+  ... TODO ...
+
+
+=== Policy ===
+
+  ... TODO ...
+
+
+=== References ===
+
+  [1] Git reference           http://gitref.org/
+  [2] Pro Git                 http://progit.org/book/
+
+
+--
