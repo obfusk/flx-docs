@@ -1,0 +1,300 @@
+flx-docs - unix quickref
+
+  Felix C. Stegerman <felixstegerman@noxqslabs.nl>
+  2012-03-22
+
+--
+
+=== Introduction ===
+
+  This is a quick reference for UNIX.  It should cover both OS X and
+  Linux.  Since I primarily use Linux myself, I have tried to document
+  any differences in OS X I was aware of.
+
+
+=== Getting Started ===
+
+  === OS X ===
+
+    Open Terminal.app; (you'll want to add it to the dock).
+
+    ( NB: use the bash [1] shell. )
+
+    You will now be presented with the prompt of the bash shell.  You
+    can now enter shell commands.
+
+    I will use '$ ' to represent the prompt in examples.  Anything
+    following a '#' is a comment; '...' signals more files/options can
+    follow; command, commandN, file, fileN, foo/bar/baz should be
+    replaced with actual command/file names.
+
+    NB - special characters (not all of them !?):
+      $ ` ~ * [ ] " ' \
+
+    NB - metacharacters:
+      | & ; ( ) < > space tab
+
+    NB - control characters:
+      || & && ; ;; ( ) | <newline>
+
+    NB - reserved words:
+      ! case do done elif else esac fi for function if in select then
+      until while { } time [[ ]]
+
+    NB: any character can be escaped with a backslash; e.g. \$.
+
+    NB: spaces separate commands and arguments.  To use filenames with
+    spaces, escape them; e.g. "file with spaces" or file\ with\
+    spaces.
+
+    You can select text with the mouse and use Command-C/V as usual;
+    pbcopy and pbpaste can be useful to interact with the clipboard.
+
+    ( You can use multiple windows and tabs; configuration of colours,
+      fonts, encodings, etc. can be useful. )
+
+    ( I personally prefer: Pro w/ Menlo Regular 18pt., 80x40, close if
+      exited cleanly, keyboard w/ normal home and end keys (ask me how
+      to configure this if you're interested), xterm, latin1.  I also
+      use screen [2].  And I've customised the bash prompt as well. )
+
+
+=== Navigation ===
+
+  === Get the working directory: pwd ===
+
+    $ pwd
+    /Users/felix
+
+
+  === List files: ls ===
+
+    $ ls
+    Desktop Documents Downloads ...
+
+    (More later.)
+
+
+  === Change directory: cd ===
+
+    $ cd /usr/local/bin
+    $ pwd
+    /usr/local/bin
+
+    $ cd
+    $ pwd
+    /Users/felix
+
+    $ cd ..
+    $ pwd
+    /Users
+
+    $ cd ~                    # ~ = your own home directory
+    $ cd ~user                # ~user = some user's home directory
+    $ ls ~/Desktop            # you get the idea
+
+
+=== Getting help ===
+
+  === help (for shell commands) ===
+
+    $ help cd
+
+
+  === man (for external commands) ===
+
+    $ man ls
+    $ man man
+
+
+=== Looking around ===
+
+  === Listing files: ls (more); command options ===
+
+    $ ls                      # current directory
+    $ ls /path/to/dir ...
+    $ ls -hlA                 # - for short options, can be combined
+                              # -- for long options
+
+    ( -l = long format; -h = MB, GB etc.; -A = hidden files (.*) )
+
+    NB: with Linux, you can mix options and arguments; in OS X options
+    must precede arguments.  You can often use -- to signal the end of
+    options (e.g. if you may have arguments that start with -).
+
+
+  === Viewing files: less ===
+
+    $ less file ...           # press q to quit, h for help
+
+
+  === File types: file ===
+
+    $ file file ...
+
+
+=== Manipulating Files ===
+
+  === Copying: cp ===
+
+    NB: you can't undo an overwrite; use -i and be careful.
+
+    $ cp file1 file2
+    $ cp *.txt /path/to/dir/
+    $ cp -i ...               # -i = prompt before overwriting !!!
+    $ cp -r ...               # -r = recursive (directories)
+
+
+  === Moving: mv ===
+
+    NB: you can't undo an overwrite; use -i and be careful.
+
+    $ mv file1 file2
+    $ mv -i ...               # see cp
+
+
+  === Deleting: rm ===
+
+    NB: you can't undo a deletion; use -i and be careful.
+
+    $ rm file ...
+    $ rm -i ...               # see cp
+    $ rm -r ...               # see cp
+
+
+  === Create directories: mkdir ===
+
+    $ mkdir foo
+    $ mkdir -p foo/bar/baz    # -p = with parents
+
+
+  === Delete directories: rmdir ===
+
+    $ rmdir foo               # must be empty; see rm -r
+
+
+  === Wildcards & bash ===
+
+    *       = any number of characters
+    ?       = any one character
+    [...]   = any of the characters; e.g. [a-z]
+    [^...]  = any character other than the characters; e.g. [^aeiou]
+
+    Also: {foo,bar}baz matches foobar and barbaz.
+
+    $ man bash                # everything you'd ever want to know
+                              # about the bash shell (and more)
+
+
+=== I/O Redirection ===
+
+  NB: > will overwrite existing files.
+
+  $ command < input-file      # read from input-file, not std input
+  $ command > output-file     # write to output-file, not std output
+  $ command >> output-file    # append to output-file
+  $ command1 | command2 | ... # chain commands
+
+  For example:
+
+    $ ls > file
+    $ sort < file1 > file2
+    $ ls -l | less
+
+
+=== Useful commands ===
+
+  $ clear                     # clear screen
+  $ echo                      # prints text to std output
+  $ reset                     # resets terminal
+
+  $ ln                        # create (sym)links
+
+  $ cat file1 file2 ...       # concatenate and show files
+  $ wc                        # word/line/char count
+
+  $ du                        # disk usage; I often use 'du -chs'
+  $ find                      # find files; see man page
+
+  $ sort                      # sorts input lines
+  $ uniq                      # drops repeated lines
+
+  $ grep                      # search w/ regular expressions
+  $ fmt                       # format text
+
+  $ head                      # show first N lines
+  $ tail                      # show last N lines
+
+  $ tr                        # translate characters
+  $ sed                       # stream editor
+  $ awk                       # programming language for filters
+
+
+=== Permissions ===
+
+  $ stat                      # get file information
+  $ chmod                     # change permissions
+  $ chown                     # change owner
+  $ chgrp                     # change group
+
+  $ sudo                      # run as other user (root)
+
+
+=== Job Control ===
+
+  $ ps                        # list processes
+  $ kill                      # kill process
+  $ killall                   # kill processes
+  $ jobs                      # list background processes
+  $ bg                        # background
+  $ fg                        # foreground
+
+  $ command &                 # run in background
+
+  ^Z                          # suspend process
+
+
+=== Advanced Commands ===
+
+  $ vim                       # Vi IMproved, a programmers text editor
+  $ view                      # read-only vim
+
+  $ diff                      # compare files line by line
+  $ cmp                       # compare two files byte by byte
+
+  $ gzip                      # (un)compress files
+  $ tar                       # archive files
+  $ zip                       # create zip files
+  $ unzip                     # unpack zip files
+
+  $ date                      # date and time
+
+  $ lpr                       # print
+
+  $ top                       # display and update sorted information
+                              # about processes
+
+  ( and many more ... )
+
+
+=== Shell Scripts ===
+
+  ... TODO ...
+
+
+=== Caveats ===
+
+  ... TODO { ...
+
+  LC_COLLATE
+
+  ... } TODO ...
+
+
+=== References ===
+
+  [1] GNU Bash                http://www.gnu.org/software/bash/
+  [2] GNU Screen              http://www.gnu.org/software/screen/
+
+
+--
