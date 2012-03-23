@@ -140,7 +140,27 @@ flx-docs - git quickref
 
 === Branching ===
 
+  (You usually start out with only a master branch.)
+
+  $ git branch                    # list branches
+  $ git show-branch [-a]          # show (all) branches
+
+  $ git branch foo                # create new branch foo
+  $ git checkout foo              # switch to branch foo
+
+  $ git checkout -b foo           # create & switch to foo
+
+  $ git merge foo                 # merge branch foo into current
+                                  # branch
+
+  $ git branch -d foo             # delete branch foo (if merged)
+  $ git branch -D foo             # BE CAREFUL; delete branch foo
+
+  $ git help ...                  # for more info, options
+
   ... TODO ...
+
+  See [2].
 
 
 === Policy ===
