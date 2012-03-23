@@ -1,7 +1,7 @@
 flx-docs - git quickref
 
   Felix C. Stegerman <felixstegerman@noxqslabs.nl>
-  2012-03-22
+  2012-03-23
 
 --
 
@@ -9,9 +9,9 @@ flx-docs - git quickref
 
   This is a quick reference for Git.
 
-( Replace 'project' with an appropriate name for your project;
-  <edit> with your editor; <msg> with a message; and ... with the
-  appropriate file(s)/path(s)/argument(s). )
+  ( Replace 'project' with an appropriate name for your project;
+    <edit> with your editor; <msg> with a message; and ... with the
+    appropriate file(s)/path(s)/argument(s). )
 
 
 === Global setup (one time) ===
@@ -107,6 +107,8 @@ flx-docs - git quickref
 
     $ git status [-s]
 
+    $ git show-branch -a
+
     $ git show                    # ... TODO ...
 
     $ git config [--global] -l
@@ -133,7 +135,7 @@ flx-docs - git quickref
 
   ... TODO ...
 
-  See [1].
+  See [1], [2].
 
 
 === Branching ===
