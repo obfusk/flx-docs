@@ -133,6 +133,16 @@ flx-docs - git quickref
     ... TODO ...
 
 
+  === Instaweb ===
+
+    $ git instaweb --httpd=webrick [--local] [--port=...]
+    $ git instaweb --stop
+
+    $ git config instaweb.local true      # optional defaults (per
+    $ git config instaweb.http  webrick   # repository; you can also
+    $ git config instaweb.port  ...       # use --global)
+
+
   ... TODO ...
 
   See [1], [2].
