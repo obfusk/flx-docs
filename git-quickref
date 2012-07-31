@@ -1,7 +1,7 @@
 flx-docs - git quickref
 
-  Felix C. Stegerman <felixstegerman@noxqslabs.nl>
-  2012-03-23
+  Felix C. Stegerman <flx@obfusk.net>
+  2012-07-31
 
 --
 
@@ -11,7 +11,7 @@ flx-docs - git quickref
 
   ( Replace 'project' with an appropriate name for your project;
     <edit> with your editor; <msg> with a message; and ... with the
-    appropriate file(s)/path(s)/argument(s). )
+    appropriate file(s)/path(s)/argument(s); [...] is optional. )
 
 
 === Global setup (one time) ===
@@ -19,7 +19,7 @@ flx-docs - git quickref
   (Use your name and email instead of mine.)
 
   $ git config --global user.name "Felix C. Stegerman"
-  $ git config --global user.email felixstegerman@noxqslabs.nl
+  $ git config --global user.email flx@obfusk.net
 
   $ git config --global color.ui true
 
@@ -69,7 +69,7 @@ flx-docs - git quickref
 
 === Push to remote repository ===
 
-  $ git push                      # later push
+  $ git push [<remote> [<branch>]]
 
 
 === Development ===
@@ -78,21 +78,19 @@ flx-docs - git quickref
 
   $ <edit> ...                    #   1. edit
   $ git add ...                   # ( 2. add new files )
-  $ git commit -a -s -m '...'     #   3. commit; see policy ?!
+  $ git commit [-a] -s -m '...'   #   3. commit; see policy ?!
   $ git push                      # ( 4. push )
+
+  $ git status                    # in between actions
 
 
 === Clone a repository ===
 
   $ git clone .../project.git project
-                                  # to use another name, change the
-                                  # last argument
+  # to use another name, change the last argument
 
 
 === Useful commands & help ===
-
-  ([...] is optional)
-
 
   === Help ===
 
@@ -105,18 +103,27 @@ flx-docs - git quickref
 
   === Miscellaneous ===
 
-    $ git status [-s]
+    $ git add .                   # adds current dir, recursively
+    $ git add -u                  # adds/removes modified/deleted files
 
+    $ git status [-s]
     $ git show-branch -a
 
-    $ git show                    # ... TODO ...
-
     $ git config [--global] -l
+
+    $ git branch --set-upstream master origin/master
+    # set upstream branch; now >> git status << will inform you if
+    # your branch is ahead of upstream, and >> git push/pull << will
+    # work w/o specifying a remote
+
+    $ git fetch/merge/pull        # see docs first!
+
+    $ git show                    # ... TODO ...
 
 
   === Log ===
 
-    $ git log [-p] [-<n>]         # -p = w/ diffs; e.g. -2 = last 2
+    $ git log [-p] [-<n>]         # -p = w/ diffs; -2 = last 2
     $ git log [--oneline] [--graph]
 
     $ git log [--stat] [--summary]
@@ -143,6 +150,15 @@ flx-docs - git quickref
     $ git config instaweb.port  ...       # use --global)
 
 
+  === Tools ===
+
+    * gitx
+    * gitk
+    * git gui
+    * git-cola
+    * ...
+
+
   ... TODO ...
 
   See [1], [2].
@@ -152,7 +168,7 @@ flx-docs - git quickref
 
   (You usually start out with only a master branch.)
 
-  $ git branch                    # list branches
+  $ git branch [-a]               # list branches
   $ git show-branch [-a]          # show (all) branches
 
   $ git branch foo                # create new branch foo
@@ -181,7 +197,7 @@ flx-docs - git quickref
 === References ===
 
   [1] Git reference           http://gitref.org/
-  [2] Pro Git                 http://progit.org/book/
+  [2] Pro Git                 http://git-scm.com/book
 
 
 --
