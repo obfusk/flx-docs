@@ -120,6 +120,8 @@ flx-docs - git quickref
 
     $ git show                    # ... TODO ...
 
+    $ git remote set-head origin -d   # remove annoying orgin/HEAD
+
 
   === Log ===
 
